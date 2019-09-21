@@ -1,0 +1,27 @@
+<div class="addBooks">
+<form>
+<p>Tytuł</p>
+<input type="text" name="title" [(ngModel)]="book.title">
+<p>Autor: </p>
+<input type="text" name="author" [(ngModel)]="book.author">
+<div class="numbersDiv">
+<p>Rok Wydania: </p>
+<input type="number" name="year" [(ngModel)]="book.releaseYear">
+<p>Liczba stron: </p>
+<input type="number" name="allPages" [(ngModel)]="book.allPages">
+<p>Przeczytane strony: </p>
+<input type="number" name="pagesRead" [(ngModel)]="book.pagesRead">
+</div>
+<p>Opis: </p>
+<input type="text" name="pagesRead" [(ngModel)]="book.description">
+<p>Zdjęcie: </p>
+<input type="text" name="image" [(ngModel)]="book.imageURL">
+<button class="addButton" (click)="addBook()">Dodaj</button>
+</form>
+</div>
+<div class="addBooks">
+  <form>
+    <p>Tytuł serii: </p>
+    <input type="text" name="sTtile" [(ngModel)]="seriestitle">
+    <button class="addButton" (click)="addSeries()">Dodaj</button></form>
+</div>

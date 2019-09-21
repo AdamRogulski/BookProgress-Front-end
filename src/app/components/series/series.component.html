@@ -1,0 +1,24 @@
+<div class="allSeries">
+  <div class="singleSeries" *ngFor="let serie of series">
+    <p class="seriesTitle">Tytuł serii: {{serie.seriesTitle}}</p>
+    <ngb-progressbar type="info" [value]="serie.seriesPagesRead/serie.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{serie.seriesPagesRead}}/ {{serie.seriesAllPages}} ({{serie.seriesPagesRead/serie.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
+    <div class="series">
+    <div class="seriesBooks" *ngFor="let book of serie.booksList" >
+      <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
+      <img src="{{book.image}}">
+      <p> Tytuł Książki: {{book.title}}</p>
+    </a>
+      <a (click)="removeBook(book.bookId)">Usuń</a>
+    </div>
+  </div>
+    <div class="addBook" *ngIf="books.length>0">
+        <form (submit)="addBookToSeries(serie.seriesId)">
+      <select [(ngModel)]="bookId" name="id">
+      <option *ngFor="let book of books" [ngValue]="book.bookId">{{book.title}} </option>
+      </select>
+      <button type=submit >Dodaj ksiażkę</button>
+        </form>
+      </div>
+  </div>
+
+</div>

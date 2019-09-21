@@ -1,0 +1,16 @@
+<div class="allBooks">
+  <h2>Ostatnie książki:</h2>
+<div class="singleBook" *ngFor="let books of booksList">
+<img src={{books.imageURL}}>
+<div class="bookInfo">
+<p>Tytuł: <a [routerLink]="['/books/']+ books.bookId" routerLinkActive="router-link-active" > {{books.title}} </a></p>
+<p>Rok wydania: {{books.releaseYear}}</p>
+<p>Autor: {{books.author}}</p>
+<p *ngIf='books.series'>Seria: {{books.series.seriesTitle}}</p>
+<p>Progres: </p>
+<p class="progressBar"><ngb-progressbar type="info" [value]="books.pagesRead/books.allPages*100" [striped]="false" [animated]="true"><i>{{books.pagesRead}}/{{books.allPages}} ({{books.pagesRead/books.allPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar></p>
+</div>
+<div class="bookDesc">
+<p >{{books.description}}</p></div>
+</div>
+</div>

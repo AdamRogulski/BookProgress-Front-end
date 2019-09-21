@@ -1,0 +1,46 @@
+.addBooks{
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: auto;
+    height: auto;
+    background-color: rgb(218, 184, 112);
+
+  }
+
+  form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+ }
+
+ p{
+   font-size: 18px;
+ }
+
+ input{
+   width: 30%;
+   background-color: darkslategray;
+   border: none;
+   color: white;
+   height: 20px;
+ }
+
+ input[type=number]{
+   width: 10%;
+ }
+
+ .numbersDiv{
+   margin-top: 20px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: baseline;
+ }
+
+ .addButton{
+   margin-top: 15px;
+   margin-bottom: 15px;
+ }

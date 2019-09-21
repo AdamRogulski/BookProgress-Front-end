@@ -1,0 +1,42 @@
+.container{
+  margin-left: 10%;
+  margin-right: 10%;
+  width: auto;
+  background-color: rgb(218, 184, 112);
+  height: auto;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+
+}
+
+.bookImage{
+  width: 100%;
+}
+
+.bookImage img{
+  width: 30%;
+  height: 38%;
+}
+
+.bookInfo{
+  margin-top: 20px;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.bookInfo input{
+  margin-left: 19px;
+  background: none;
+  text-align: center;
+  border: solid 1px black;
+  width: 4%;
+  height: 20px;
+}
+
+.bookInfo button{
+  border: none;
+  background: none;
+}
