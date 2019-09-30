@@ -1,11 +1,10 @@
 .allBooks{
   margin-top: 10px;
-  /* text-align: center; */
-  margin-left: 5%;
-  margin-right: 5%;
-  width: 90%;
+  margin-left: 3%;
+  margin-right: 3%;
+  width: 94%;
   height: 1500px;
-  /* background-color: white; */
+  padding-top: 65px;
 }
 
 
@@ -19,10 +18,12 @@ h2{
   margin-top: 15px;
   display: flex;
   flex-flow: row;
-  height: 16%;
+  height: 17%;
   margin-left: 8px;
   margin-right: 8px;
-  background-color: rgb(218, 184, 112);
+  background-color: #247BA0;
+  border-radius: 5px;
+
 }
 
 .singleBook img {
@@ -38,7 +39,7 @@ h2{
   flex-flow: column;
   /* flex-wrap: wrap; */
   margin-left: 15px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding-top: 6px;
   width: 25%;
 }
@@ -48,7 +49,10 @@ h2{
   text-align: left;
   justify-content: center;
   margin-left: 25px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   width: 60%;
 }
 
+a{
+  color: black;
+}

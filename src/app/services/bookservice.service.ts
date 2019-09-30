@@ -20,6 +20,14 @@ export class BookserviceService {
     return this.http.get(this.url + '/books');
   }
 
+  getFavouritesBooks(): Observable<any> {
+    return this.http.get(this.url + '/books/favourite');
+  }
+
+  setBookFavourite(id): Observable<string> {
+    return this.http.put(this.url + '/books/' + id + '/favourite', null, {responseType: 'text'});
+  }
+
   getLatest8Books(): Observable<any> {
     return this.http.get(this.url + '/books/latest');
   }
@@ -38,5 +46,8 @@ export class BookserviceService {
     return this.http.put(this.url + '/books/' + bookId + '/pages/', httpParams, {responseType: 'text'});
   }
 
+  deleteBookById(bookId): Observable<string> {
+    return this.http.delete(this.url + '/books/' + bookId, {responseType : 'text'});
+  }
 
 }

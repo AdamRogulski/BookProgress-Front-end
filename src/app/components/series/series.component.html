@@ -1,7 +1,23 @@
 <div class="allSeries">
+  <select [(ngModel)]="selectedSortOption">
+    <option *ngFor="let options of sortOptions">{{options}}</option>
+  </select>
+  <button (click)="sortSeries()">Sortuj</button>
+  <input placeholder="szukaj" name=searchInp [(ngModel)]="searchInput" (ngModelChange)="search()">
+  <div class="singleSeries" *ngIf="!searchInput">
+    <p class="seriesTitle">Tytuł serii: <a> Ulubione</a></p>
+    <div class="series">
+    <div class="seriesBooks" *ngFor="let book of favouritesBooks" >
+      <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
+      <img src="{{book.imageURL}}">
+      <p> Tytuł Książki: {{book.title}}</p>
+    </a>
+    </div>
+  </div>
+  </div>
   <div class="singleSeries" *ngFor="let serie of series">
-    <p class="seriesTitle">Tytuł serii: {{serie.seriesTitle}}</p>
-    <ngb-progressbar type="info" [value]="serie.seriesPagesRead/serie.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{serie.seriesPagesRead}}/ {{serie.seriesAllPages}} ({{serie.seriesPagesRead/serie.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
+    <p class="seriesTitle">Tytuł serii: <a [routerLink]="['/series/'] +serie.seriesId" routerLinkActive="router-link-active" > {{serie.seriesTitle}}</a></p>
+    <ngb-progressbar type="danger" [value]="serie.seriesPagesRead/serie.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{serie.seriesPagesRead}}/ {{serie.seriesAllPages}} ({{serie.seriesPagesRead/serie.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
     <div class="series">
     <div class="seriesBooks" *ngFor="let book of serie.booksList" >
       <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
@@ -11,7 +27,7 @@
       <a (click)="removeBook(book.bookId)">Usuń</a>
     </div>
   </div>
-    <div class="addBook" *ngIf="books.length>0">
+    <div class="addBook" *ngIf="books!=undefined&&books.length>0">
         <form (submit)="addBookToSeries(serie.seriesId)">
       <select [(ngModel)]="bookId" name="id">
       <option *ngFor="let book of books" [ngValue]="book.bookId">{{book.title}} </option>

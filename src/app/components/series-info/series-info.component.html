@@ -1,1 +1,8 @@
-<p>series-info works!</p>
+<div *ngIf=series class=container>
+<p>Tytuł: {{series.seriesTitle}}</p>
+<p>Data utworzenia: {{series.seriesCreationTime}}</p>
+<p>Opis:</p>
+<p>{{series.seriesDescription}}</p>
+<ngb-progressbar type="danger" [value]="series.seriesPagesRead/series.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{series.seriesPagesRead}}/ {{series.seriesAllPages}} ({{series.seriesPagesRead/series.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
+<button mat-raised-button color="warn" (click)="deleteSeries()">Usuń</button>
+</div>

@@ -1,7 +1,7 @@
 export class Book {
   title: string;
   bookId: number;
-  series: Array<{ seriesTitle: string, id: number}>;
+  series: {seriesId: number, seriesTitle: string};
   description: string;
   releaseYear: number;
   author: string;
@@ -9,4 +9,5 @@ export class Book {
   allPages: number;
   pagesRead: number;
   imageURL: string;
+  favourite: boolean;
 }

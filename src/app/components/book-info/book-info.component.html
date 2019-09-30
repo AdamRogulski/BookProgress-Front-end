@@ -1,6 +1,8 @@
 <div *ngIf="book" class=container>
-  <p>{{book.title}}</p>
-  <div class=bookImage>
+  <p>{{book.title}}   <button *ngIf="!book.favourite" (click)="setBookToFavourite()"><i class="material-icons">favorite_border</i></button>
+    <button *ngIf="book.favourite" (click)="setBookToFavourite()"><i class="material-icons">favorite</i></button>
+   </p>
+    <div class=bookImage>
     <img src={{book.imageURL}}>
   </div>
   <div class=bookInfo>
@@ -9,10 +11,11 @@
     <p>Rok wydania: {{book.releaseYear}}</p>
     <p *ngIf=book.series>Seria: {{book.series.seriesTitle}}</p>
     <p>Liczba stron: {{book.allPages}}</p>
-    <p>Przeczytane strony: {{book.pagesRead}}<input [(ngModel)]="pagesNumber"><button (click)="changePagesRead()">Zapisz</button></p>
+    <p>Przeczytane strony: {{book.pagesRead}}<input [(ngModel)]="pagesNumber"><button class="saveBtn" mat-button (click)="changePagesRead()">Zapisz</button></p>
     <p>{{book.description}}</p>
     <p>Progres w czytaniu:</p>
-    <ngb-progressbar type="info" [value]="book.pagesRead/book.allPages*100" [striped]="false" [animated]="true"><i>{{book.pagesRead}}/{{book.allPages}} ({{book.pagesRead/book.allPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
+    <ngb-progressbar type="danger" [value]="book.pagesRead/book.allPages*100" [striped]="false" [animated]="true"><i>{{book.pagesRead}}/{{book.allPages}} ({{book.pagesRead/book.allPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
+    <button  class="deleteButton" mat-raised-button color="warn" (click)="deleteBook()">Usuń książkę</button>
   </div>
 </div>
 

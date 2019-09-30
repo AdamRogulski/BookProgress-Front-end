@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SeriesComponent } from './components/series/series.component';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { SeriesInfoComponent } from './components/series-info/series-info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { SeriesInfoComponent } from './components/series-info/series-info.compon
     SeriesComponent,
     BookInfoComponent,
     SeriesInfoComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

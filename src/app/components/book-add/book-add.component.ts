@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BookserviceService } from 'src/app/services/bookservice.service';
 import { SeriesService } from 'src/app/services/series.service';
+import { Series } from 'src/app/models/series';
 
 @Component({
   selector: 'app-book-add',
@@ -11,7 +12,7 @@ import { SeriesService } from 'src/app/services/series.service';
 export class BookAddComponent implements OnInit {
 
   book = new Book();
-  seriestitle: string;
+  series = new Series();
 
   constructor(private bookService: BookserviceService, private seriesService: SeriesService) { }
 
@@ -24,7 +25,7 @@ export class BookAddComponent implements OnInit {
   }
 
   addSeries(): void {
-    this.seriesService.addSeries(this.seriestitle).subscribe( data =>
+    this.seriesService.addSeriesByBody(this.series).subscribe( data =>
       alert(data));
   }
 
