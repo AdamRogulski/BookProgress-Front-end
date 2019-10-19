@@ -54,3 +54,8 @@ p button:focus{
 .deleteButton{
   margin-top: 20px;
 }
+
+a{
+  text-decoration: none;
+  color: black;
+}

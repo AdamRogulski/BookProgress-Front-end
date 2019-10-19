@@ -4,16 +4,57 @@
   width: auto;
   background-color: #247BA0;
   height: auto;
-  padding-top: 85px;
+  padding-top: 25px;
   padding-bottom: 25px;
-  margin-top: 20px;
+  margin-top: 80px;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 button{
   margin-top: 20px;
   background: none;
   border: solid 1px black;
+}
+
+.result{
+  margin-left: 7%;
+  margin-right: 7%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 25px;
+}
+
+.books{
+ margin-top: 2%;
+ display: flex;
+ flex-direction: row;
+ width: 270px;
+ height: 150px;
+ background-color: rgb(128, 34, 17);
+ cursor: pointer;
+ color: white;
+ border-radius: 2px;
+}
+
+.description{
+ margin-left: 20px;
+}
+
+.description a{
+ font-size: 15px;
+}
+
+.description p{
+ font-size: 13px;
+ margin-left: 0px;
+}
+
+
+img{
+ width: 40%;
+ /* height: 100%; */
 }

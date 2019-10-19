@@ -12,8 +12,8 @@ export class BookserviceService {
 
   url = '///192.168.2.10:8080';
 
-  addBook(book: Book): Observable<any> {
-    return this.http.post(this.url + '/books/add', book);
+  addBook(book: Book): Observable<string> {
+    return this.http.post(this.url + '/books/add', book, {responseType: 'text'} );
   }
 
   getBooks(): Observable<any> {

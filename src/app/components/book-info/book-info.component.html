@@ -9,9 +9,9 @@
     <p>ID: {{book.bookId}}</p>
     <p>Autor: {{book.author}}</p>
     <p>Rok wydania: {{book.releaseYear}}</p>
-    <p *ngIf=book.series>Seria: {{book.series.seriesTitle}}</p>
+    <p *ngIf=book.series>Seria: <a [routerLink]="['/series/' +book.series.seriesId]" routerLinkActive="router-link-active" > {{book.series.seriesTitle}} </a></p>
     <p>Liczba stron: {{book.allPages}}</p>
-    <p>Przeczytane strony: {{book.pagesRead}}<input [(ngModel)]="pagesNumber"><button class="saveBtn" mat-button (click)="changePagesRead()">Zapisz</button></p>
+    <p>Przeczytane strony: {{book.pagesRead}}<input [(ngModel)]="pagesNumber" type=number><button class="saveBtn" mat-button (click)="changePagesRead()">Zapisz</button></p>
     <p>{{book.description}}</p>
     <p>Progres w czytaniu:</p>
     <ngb-progressbar type="danger" [value]="book.pagesRead/book.allPages*100" [striped]="false" [animated]="true"><i>{{book.pagesRead}}/{{book.allPages}} ({{book.pagesRead/book.allPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>

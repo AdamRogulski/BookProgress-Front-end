@@ -15,6 +15,7 @@ import { SeriesInfoComponent } from './components/series-info/series-info.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatButtonModule} from '@angular/material/button';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     BookAddComponent,
     SeriesComponent,
     BookInfoComponent,
-    SeriesInfoComponent
+    SeriesInfoComponent,
+    StatisticsComponent
     ],
   imports: [
     BrowserModule,

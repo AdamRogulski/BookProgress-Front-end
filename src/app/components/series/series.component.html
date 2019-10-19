@@ -7,7 +7,7 @@
   <div class="singleSeries" *ngIf="!searchInput">
     <p class="seriesTitle">Tytuł serii: <a> Ulubione</a></p>
     <div class="series">
-    <div class="seriesBooks" *ngFor="let book of favouritesBooks" >
+    <div class="seriesBooks" *ngFor="let book of favouritesBooks" [ngStyle]="{'background-color': book.allPages == book.pagesRead ? '#70C1B3' : 'red'}">
       <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
       <img src="{{book.imageURL}}">
       <p> Tytuł Książki: {{book.title}}</p>
@@ -18,14 +18,21 @@
   <div class="singleSeries" *ngFor="let serie of series">
     <p class="seriesTitle">Tytuł serii: <a [routerLink]="['/series/'] +serie.seriesId" routerLinkActive="router-link-active" > {{serie.seriesTitle}}</a></p>
     <ngb-progressbar type="danger" [value]="serie.seriesPagesRead/serie.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{serie.seriesPagesRead}}/ {{serie.seriesAllPages}} ({{serie.seriesPagesRead/serie.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
-    <div class="series">
-    <div class="seriesBooks" *ngFor="let book of serie.booksList" >
+    <div class="series" #box [id]="serie.seriesId">
+      <div class=scrollRight>
+          <button (click)="scrollRight(serie.seriesId)"><i class="material-icons">keyboard_arrow_right</i></button>
+      </div>
+    <div class="seriesBooks" *ngFor="let book of serie.booksList"
+     [ngStyle]="{'background-color': book.allPages == book.pagesRead ? '#70C1B3' : 'red'}">
       <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
       <img src="{{book.image}}">
       <p> Tytuł Książki: {{book.title}}</p>
     </a>
       <a (click)="removeBook(book.bookId)">Usuń</a>
     </div>
+  <div class=scrollLeft>
+    <button (click)="scrollLeft(serie.seriesId)"><i class="material-icons">keyboard_arrow_left</i></button>
+  </div>
   </div>
     <div class="addBook" *ngIf="books!=undefined&&books.length>0">
         <form (submit)="addBookToSeries(serie.seriesId)">

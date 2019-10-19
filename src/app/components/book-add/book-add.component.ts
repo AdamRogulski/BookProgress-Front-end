@@ -19,12 +19,12 @@ export class BookAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  addBook(): void {
+  addBook() {
     this.bookService.addBook(this.book).subscribe( data =>
-      alert('Book Added!'));
+      alert(data));
   }
 
-  addSeries(): void {
+  addSeries() {
     this.seriesService.addSeriesByBody(this.series).subscribe( data =>
       alert(data));
   }

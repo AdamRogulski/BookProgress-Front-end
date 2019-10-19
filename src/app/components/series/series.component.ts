@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import { SeriesService } from 'src/app/services/series.service';
 import { BookserviceService } from 'src/app/services/bookservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,6 +18,7 @@ export class SeriesComponent implements OnInit {
   sortOptions = ['Alfabetycznie rosnąco', 'Alfabetycznie malejąco', 'Po dacie dodania malejąco', 'Po dacie dodania rosnąco'];
   selectedSortOption: string;
   searchInput: string;
+  @ViewChildren('box') private box: QueryList<ElementRef>;
 
   constructor(private seriesService: SeriesService, private bookService: BookserviceService, private snack: MatSnackBar) { }
 
@@ -61,5 +62,15 @@ export class SeriesComponent implements OnInit {
   search() {
     this.series = this.allSeries;
     this.series = this.series.filter( x => x.seriesTitle.toLowerCase().includes(this.searchInput.toLowerCase()));
+  }
+
+  scrollRight(seriesID) {
+    const sBox = this.box.toArray();
+    sBox.find(x => x.nativeElement.id === seriesID.toString()).nativeElement.scrollLeft += 210;
+  }
+
+  scrollLeft(seriesID) {
+    const sBox = this.box.toArray();
+    sBox.find(x => x.nativeElement.id === seriesID.toString()).nativeElement.scrollLeft -= 210;
   }
 }

@@ -5,6 +5,7 @@ import { BookAddComponent } from './components/book-add/book-add.component';
 import { SeriesComponent } from './components/series/series.component';
 import { BookInfoComponent } from './components/book-info/book-info.component';
 import { SeriesInfoComponent } from './components/series-info/series-info.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'add', component: BookAddComponent},
   {path: 'series', component: SeriesComponent},
   {path: 'books/:id', component: BookInfoComponent},
-  {path: 'series/:id', component: SeriesInfoComponent}
+  {path: 'series/:id', component: SeriesInfoComponent},
+  {path: 'statistics', component: StatisticsComponent}
 ];
 
 @NgModule({

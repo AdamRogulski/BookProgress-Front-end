@@ -6,3 +6,11 @@
 <ngb-progressbar type="danger" [value]="series.seriesPagesRead/series.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{series.seriesPagesRead}}/ {{series.seriesAllPages}} ({{series.seriesPagesRead/series.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
 <button mat-raised-button color="warn" (click)="deleteSeries()">Usuń</button>
 </div>
+<div class="result" *ngIf="series.booksList">
+  <a *ngFor = "let book of series.booksList" [routerLink]="['/books/' +book.bookId]" class="books">
+ <img src={{book.image}}>
+ <div class="description">
+ <a>Tytuł: {{book.title}}</a>
+</div>
+ </a>
+</div>
