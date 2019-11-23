@@ -6,18 +6,26 @@
 <input type="text" name="author" [(ngModel)]="book.author">
 <div class="numbersDiv">
 <p>Rok Wydania: </p>
-<input type="number" name="year" [(ngModel)]="book.releaseYear">
+<input type="number" name="year" [(ngModel)]="book.releaseYear" maxlength="4">
 <p>Liczba stron: </p>
-<input type="number" name="allPages" [(ngModel)]="book.allPages">
+<input type="number" name="allPages" [(ngModel)]="book.allPages" maxlength="7">
 <p>Przeczytane strony: </p>
-<input type="number" name="pagesRead" [(ngModel)]="book.pagesRead">
+<input type="number" name="pagesRead" [(ngModel)]="book.pagesRead" maxlength="7">
 </div>
 <p>Opis: </p>
 <textarea name="pagesRead" [(ngModel)]="book.description"></textarea>
 <p>Zdjęcie: </p>
 <input type="text" name="image" [(ngModel)]="book.imageURL">
-<button mat-raised-button class="addButton" (click)="addBook()">Dodaj</button>
+<button mat-raised-button class="addButton" (click)="addBook()" *ngIf="spinnerService.buttonVis | async">Dodaj</button>
+<mat-spinner diameter=50 *ngIf="spinnerService.visibilty | async"></mat-spinner>
 </form>
+</div>
+<div class="addBooks">
+  <form>
+    <p>Google books id: </p>
+    <input type="text" name=googleId [(ngModel)]="googleId">
+    <button mat-raised-button class="addButton" (click)="addBookUsingGoogleId()" >Dodaj</button>
+  </form>
 </div>
 <div class="addBooks">
   <form>
@@ -25,5 +33,6 @@
     <input type="text" name="sTtile" [(ngModel)]="series.seriesTitle">
     <p>Opis serii: </p>
     <textarea name="sDesc" [(ngModel)]="series.seriesDescription"></textarea>
-    <button mat-raised-button class="addButton" (click)="addSeries()">Dodaj</button></form>
+    <button mat-raised-button class="addButton" (click)="addSeries()">Dodaj</button>
+  </form>
 </div>

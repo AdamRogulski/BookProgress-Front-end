@@ -1,12 +1,24 @@
-import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, QueryList, ViewChildren, OnDestroy} from '@angular/core';
 import { SeriesService } from 'src/app/services/series.service';
 import { BookserviceService } from 'src/app/services/bookservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { trigger, transition, animate, style, state, stagger, query } from '@angular/animations';
+import { Router, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-series',
   templateUrl: './series.component.html',
-  styleUrls: ['./series.component.css']
+  styleUrls: ['./series.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition( '* => *', [
+      query(':enter', [
+        style({ opacity: '0', }),
+        stagger( 250, [
+        animate('.5s ease-out', style({opacity: '1'})) ]) ], { optional: true})
+      ])
+    ])
+  ]
 })
 export class SeriesComponent implements OnInit {
 
@@ -19,8 +31,17 @@ export class SeriesComponent implements OnInit {
   selectedSortOption: string;
   searchInput: string;
   @ViewChildren('box') private box: QueryList<ElementRef>;
+  hide = {};
 
-  constructor(private seriesService: SeriesService, private bookService: BookserviceService, private snack: MatSnackBar) { }
+  constructor(private seriesService: SeriesService, private bookService: BookserviceService, private snack: MatSnackBar,
+              private router: Router) {
+                this.router.events.subscribe( (event) => {
+                if (event instanceof NavigationStart) {
+                window.scrollTo(0, 0);
+                }}
+                );
+
+  }
 
   ngOnInit() {
     this.seriesService.getAllSeries().subscribe( data => {
@@ -44,7 +65,7 @@ export class SeriesComponent implements OnInit {
   removeBook(bookId): void {
     this.seriesService.removeBookFromSeries(bookId).subscribe( data => {
       this.snack.open(data, 'OK!', {duration: 2000}),
-    this.ngOnInit();
+      this.ngOnInit();
     });
   }
 

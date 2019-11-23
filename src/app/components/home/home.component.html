@@ -11,6 +11,6 @@
 <p class="progressBar"><ngb-progressbar type="info" [value]="books.pagesRead/books.allPages*100" [striped]="false" [animated]="true"><i>{{books.pagesRead}}/{{books.allPages}} ({{books.pagesRead/books.allPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar></p>
 </div>
 <div class="bookDesc">
-<p >{{books.description}}</p></div>
+<p>{{books.description | slice : 0 : 1000}}</p></div>
 </div>
 </div>

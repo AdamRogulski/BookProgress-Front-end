@@ -5,18 +5,21 @@
   <button (click)="sortSeries()">Sortuj</button>
   <input placeholder="szukaj" name=searchInp [(ngModel)]="searchInput" (ngModelChange)="search()">
   <div class="singleSeries" *ngIf="!searchInput">
-    <p class="seriesTitle">Tytuł serii: <a> Ulubione</a></p>
+    <p class="seriesTitle">Wyróżnione:</p>
     <div class="series">
     <div class="seriesBooks" *ngFor="let book of favouritesBooks" [ngStyle]="{'background-color': book.allPages == book.pagesRead ? '#70C1B3' : 'red'}">
       <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
       <img src="{{book.imageURL}}">
-      <p> Tytuł Książki: {{book.title}}</p>
+      <p> Tytuł: {{book.title}}</p>
     </a>
     </div>
   </div>
   </div>
-  <div class="singleSeries" *ngFor="let serie of series">
+  <div  [@fadeIn] = "series?.length">
+  <div class="singleSeries" *ngFor="let serie of series, let i = index">
     <p class="seriesTitle">Tytuł serii: <a [routerLink]="['/series/'] +serie.seriesId" routerLinkActive="router-link-active" > {{serie.seriesTitle}}</a></p>
+   <button (click)="hide[i] = !hide[i]">Pokaż/Ukryj</button>
+   <div *ngIf="hide[i]">
     <ngb-progressbar type="danger" [value]="serie.seriesPagesRead/serie.seriesAllPages*100" [striped]="false" [animated]="true"><i>{{serie.seriesPagesRead}}/ {{serie.seriesAllPages}} ({{serie.seriesPagesRead/serie.seriesAllPages*100 | number:'1.0-0'}}%)</i></ngb-progressbar>
     <div class="series" #box [id]="serie.seriesId">
       <div class=scrollRight>
@@ -26,7 +29,7 @@
      [ngStyle]="{'background-color': book.allPages == book.pagesRead ? '#70C1B3' : 'red'}">
       <a [routerLink]="['/books/'] +book.bookId" routerLinkActive="router-link-active" >
       <img src="{{book.image}}">
-      <p> Tytuł Książki: {{book.title}}</p>
+      <p> Tytuł: {{book.title}}</p>
     </a>
       <a (click)="removeBook(book.bookId)">Usuń</a>
     </div>
@@ -42,6 +45,7 @@
       <button type=submit >Dodaj ksiażkę</button>
         </form>
       </div>
+    </div>
   </div>
-
+</div>
 </div>

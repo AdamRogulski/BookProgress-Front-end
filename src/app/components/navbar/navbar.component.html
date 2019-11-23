@@ -4,3 +4,4 @@
   <li><a [routerLink]="['/add']" routerLinkActive="router-link-active" >Dodaj</a></li>
   <li><a [routerLink]="['/statistics']" routerLinkActive="router-link-active" >Statystki</a></li>
 </ul>
+<mat-progress-bar value=100 mode="indeterminate" *ngIf="spinnerService.visibilty | async"></mat-progress-bar>

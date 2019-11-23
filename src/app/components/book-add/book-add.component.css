@@ -1,5 +1,4 @@
 .addBooks{
-    margin-top: 75px;
     text-align: center;
     margin-left: 15%;
     margin-right: 15%;
@@ -7,6 +6,10 @@
     height: auto;
     background-color: #247BA0;
     margin-bottom: 20px;
+  }
+
+  .addBooks:nth-of-type(1){
+    margin-top: 75px;
   }
 
   form{
@@ -61,4 +64,9 @@
  .addButton{
    margin-top: 15px;
    margin-bottom: 15px;
+ }
+
+ mat-spinner{
+   margin-top: 20px;
+   margin-bottom: 20px;
  }
